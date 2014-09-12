@@ -1,4 +1,4 @@
-language-gRally
-===============
+# gRally syntax support in Atom
 
-language for gRally files to Atom
+Syntax support for .gRally files.
+[gRally.net](http://www.grally.net)

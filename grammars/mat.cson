@@ -1,0 +1,141 @@
+'scopeName': 'source.mat'
+'name': 'gRally Mat'
+'fileTypes': [
+  'mat'
+]
+'patterns': [
+  {
+    'match': '(?i)\\b(color1)\\b'
+    'name': 'comment.mat'
+  }
+  {
+    'match': '(?i)\\b(color2)\\b'
+    'name': 'string.mat'
+  }
+  {
+    'match': '(?i)\\b(color3)\\b'
+    'name': 'constant.character.mat'
+  }
+  {
+    'match': '(?i)\\b(color4)\\b'
+    'name': 'storage.type.mat'
+  }
+  {
+    'match': '(?i)\\b(color5)\\b'
+    'name': 'keyword.mat'
+  }
+  {
+    'match': '(?i)\\b(color6)\\b'
+    'name': 'entity.name.function.mat'
+  }
+  {
+    'match': '(?i)\\b(color7)\\b'
+    'name': 'meta.preprocessor.mat'
+  }
+  {
+    'match': '(?i)\\b(color8)\\b'
+    'name': 'constant.numeric.mat'
+  }
+  {
+    'match': '(?i)\\b(color9)\\b'
+    'name': 'variable.mat'
+  }
+  {
+    'match': '(?i)\\b(color10)\\b'
+    'name': 'keyword.operator.logical.mat'
+  }
+  {
+    'match': '(?i)\\b(color11)\\b'
+    'name': 'constant.character.escape.regex.mat'
+  }
+  {
+    'match': '(?i)\\b(color12)\\b'
+    'name': 'keyword.operator.logical.mat'
+  }
+
+
+  {
+    'match': '\\\\[0-7]{1,3}'
+    'name': 'constant.numeric.octal.mat'
+  }
+  {
+    'match': '\\\\x[0-9A-Fa-f]{1,2}'
+    'name': 'constant.numeric.hex.mat'
+  }
+  {
+    'match': '\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)\\b'
+    'name': 'constant.numeric.mat'
+  }
+
+  {
+    'match': '(?i)\\b(material)\\b'
+    'name': 'keyword.material.mat'
+  }
+  {
+    'match': '(?i)\\b(ambient|diffuse|specular|emissive)\\b'
+    'name': 'constant.character.mat'
+  }
+  {
+    'match': '(?i)\\b(parent)\\b'
+    'name': 'string.constant.mat'
+  }
+  {
+    'match': '(?i)\\b(diffuseMap|specMap|normalMap)\\b'
+    'name': 'entity.name.function.mat'
+  }
+  {
+    'match': '(?i)\\b(diffuseMapUvIndex|specMapUvIndex)\\b'
+    'name': 'meta.preprocessor'
+  }
+  {
+    'match': '(?i)\\b(normalMapUvIndex)\\b'
+    'name': 'meta.cast'
+  }
+  {
+    'begin': '(^[ \\t]+)?(?=//)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.whitespace.comment.leading'
+    'end': '(?!\\G)'
+    'patterns': [
+      {
+        'begin': '//'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment'
+        'end': '\\n'
+        'name': 'comment.line.double-dash'
+      }
+    ]
+  }
+  {
+    'begin': '(?=\\\\?[a-zA-Z_\\x{7f}-\\x{ff}])'
+    'end': '(?=[^\\\\a-zA-Z_\\x{7f}-\\x{ff}])'
+    'patterns': [
+      {
+        'match': '(?i)\\b(true|false)\\b'
+        'name': 'constant.numeric.mat'
+      }
+    ]
+  }
+]
+'repository':
+  'block':
+    'patterns': [
+      {
+        'begin': '{'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.section.block.begin.source'
+        'end': '}'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.section.block.end.source'
+        'name': 'meta.block.source'
+        'patterns': [
+          {
+            'include': '#code'
+          }
+        ]
+      }
+    ]

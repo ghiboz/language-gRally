@@ -1,0 +1,86 @@
+'scopeName': 'source.physics'
+'name': 'gRally Physics'
+'fileTypes': [
+  'physics'
+]
+'patterns': [
+  {
+    'begin': '(^[ \\t]+)?(?=#)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.whitespace.comment.leading.physics'
+    'end': '(?!\\G)'
+    'patterns': [
+      {
+        'begin': '#'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.physics'
+        'end': '\\n'
+        'name': 'comment.line.number-sign.physics'
+      }
+    ]
+  }
+  {
+    'begin': '(^[ \\t]+)?(?=;)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.whitespace.comment.leading.physics'
+    'end': '(?!\\G)'
+    'patterns': [
+      {
+        'begin': ';'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.physics'
+        'end': '\\n'
+        'name': 'comment.line.semicolon.physics'
+      }
+    ]
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.other.definition.physics'
+      '2':
+        'name': 'punctuation.separator.key-value.physics'
+    'match': '^([\\[\\]a-zA-Z0-9_.-]+)\\s*(=)'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.entity.physics'
+      '3':
+        'name': 'punctuation.definition.entity.physics'
+    'match': '^(\\[)(.*?)(\\])'
+    'name': 'entity.name.section.group-title.physics'
+  }
+  {
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.physics'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.physics'
+    'name': 'string.quoted.single.physics'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escape.physics'
+      }
+    ]
+  }
+  {
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.physics'
+    'end': '[!^\\"](?!.*\")'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.physics'
+    'name': 'string.quoted.double.physics'
+  }
+]

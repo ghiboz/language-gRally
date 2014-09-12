@@ -1,0 +1,275 @@
+'scopeName': 'source.grog'
+'name': 'gRally Grog'
+'fileTypes': [
+  'grog'
+]
+'patterns': [
+  {
+    'begin': '(<\\?)\\s*([-_a-zA-Z0-9]+)'
+    'captures':
+      '1':
+        'name': 'punctuation.definition.tag.grog'
+      '2':
+        'name': 'entity.name.tag.grog'
+    'end': '(\\?>)'
+    'name': 'meta.tag.preprocessor.grog'
+    'patterns': [
+      {
+        'match': ' ([a-zA-Z-]+)'
+        'name': 'entity.other.attribute-name.grog'
+      }
+      {
+        'include': '#doublequotedString'
+      }
+      {
+        'include': '#singlequotedString'
+      }
+    ]
+  }
+  {
+    'begin': '(<!)(DOCTYPE)\\s+([:a-zA-Z_][:a-zA-Z0-9_.-]*)'
+    'captures':
+      '1':
+        'name': 'punctuation.definition.tag.grog'
+      '2':
+        'name': 'keyword.other.doctype.grog'
+      '3':
+        'name': 'variable.language.documentroot.grog'
+    'end': '\\s*(>)'
+    'name': 'meta.tag.sgml.doctype.grog'
+    'patterns': [
+      {
+        'include': '#internalSubset'
+      }
+    ]
+  }
+  {
+    'begin': '<[!%]--'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.grog'
+    'end': '--%?>'
+    'name': 'comment.block.grog'
+  }
+  {
+    'begin': '(<)((?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+))(?=(\\s[^>]*)?></\\2>)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.grog'
+      '3':
+        'name': 'entity.name.tag.namespace.grog'
+      '4':
+        'name': 'entity.name.tag.grog'
+      '5':
+        'name': 'punctuation.separator.namespace.grog'
+      '6':
+        'name': 'entity.name.tag.localname.grog'
+    'end': '(>(<))/(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)(>)'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.tag.grog'
+      '2':
+        'name': 'meta.scope.between-tag-pair.grog'
+      '3':
+        'name': 'entity.name.tag.namespace.grog'
+      '4':
+        'name': 'entity.name.tag.grog'
+      '5':
+        'name': 'punctuation.separator.namespace.grog'
+      '6':
+        'name': 'entity.name.tag.localname.grog'
+      '7':
+        'name': 'punctuation.definition.tag.grog'
+    'name': 'meta.tag.no-content.grog'
+    'patterns': [
+      {
+        'include': '#tagStuff'
+      }
+    ]
+  }
+  {
+    'begin': '(</?)(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)'
+    'captures':
+      '1':
+        'name': 'punctuation.definition.tag.grog'
+      '2':
+        'name': 'entity.name.tag.namespace.grog'
+      '3':
+        'name': 'entity.name.tag.grog'
+      '4':
+        'name': 'punctuation.separator.namespace.grog'
+      '5':
+        'name': 'entity.name.tag.localname.grog'
+    'end': '(/?>)'
+    'name': 'meta.tag.grog'
+    'patterns': [
+      {
+        'include': '#tagStuff'
+      }
+    ]
+  }
+  {
+    'include': '#entity'
+  }
+  {
+    'include': '#bare-ampersand'
+  }
+  {
+    'begin': '<%@'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.begin.grog'
+    'end': '%>'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.end.grog'
+    'name': 'source.java-props.embedded.grog'
+    'patterns': [
+      {
+        'match': 'page|include|taglib'
+        'name': 'keyword.other.page-props.grog'
+      }
+    ]
+  }
+  {
+    'begin': '<%[!=]?(?!--)'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.begin.grog'
+    'end': '(?!--)%>'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.embedded.end.grog'
+    'name': 'source.java.embedded.grog'
+    'patterns': [
+      {
+        'include': 'source.java'
+      }
+    ]
+  }
+  {
+    'begin': '<!\\[CDATA\\['
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.grog'
+    'end': ']]>'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.grog'
+    'name': 'string.unquoted.cdata.grog'
+  }
+]
+'repository':
+  'EntityDecl':
+    'begin': '(<!)(ENTITY)\\s+(%\\s+)?([:a-zA-Z_][:a-zA-Z0-9_.-]*)(\\s+(?:SYSTEM|PUBLIC)\\s+)?'
+    'captures':
+      '1':
+        'name': 'punctuation.definition.tag.grog'
+      '2':
+        'name': 'keyword.other.entity.grog'
+      '3':
+        'name': 'punctuation.definition.entity.grog'
+      '4':
+        'name': 'variable.language.entity.grog'
+      '5':
+        'name': 'keyword.other.entitytype.grog'
+    'end': '(>)'
+    'patterns': [
+      {
+        'include': '#doublequotedString'
+      }
+      {
+        'include': '#singlequotedString'
+      }
+    ]
+  'bare-ampersand':
+    'match': '&'
+    'name': 'invalid.illegal.bad-ampersand.grog'
+  'doublequotedString':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.grog'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.grog'
+    'name': 'string.quoted.double.grog'
+    'patterns': [
+      {
+        'include': '#entity'
+      }
+      {
+        'include': '#bare-ampersand'
+      }
+    ]
+  'entity':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.grog'
+      '3':
+        'name': 'punctuation.definition.constant.grog'
+    'match': '(&)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)'
+    'name': 'constant.character.entity.grog'
+  'internalSubset':
+    'begin': '(\\[)'
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.grog'
+    'end': '(\\])'
+    'name': 'meta.internalsubset.grog'
+    'patterns': [
+      {
+        'include': '#EntityDecl'
+      }
+      {
+        'include': '#parameterEntity'
+      }
+    ]
+  'parameterEntity':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.constant.grog'
+      '3':
+        'name': 'punctuation.definition.constant.grog'
+    'match': '(%)([:a-zA-Z_][:a-zA-Z0-9_.-]*)(;)'
+    'name': 'constant.character.parameter-entity.grog'
+  'singlequotedString':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.grog'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.grog'
+    'name': 'string.quoted.single.grog'
+    'patterns': [
+      {
+        'include': '#entity'
+      }
+      {
+        'include': '#bare-ampersand'
+      }
+    ]
+  'tagStuff':
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'entity.other.attribute-name.namespace.grog'
+          '2':
+            'name': 'entity.other.attribute-name.grog'
+          '3':
+            'name': 'punctuation.separator.namespace.grog'
+          '4':
+            'name': 'entity.other.attribute-name.localname.grog'
+        'match': ' (?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9]+)='
+      }
+      {
+        'include': '#doublequotedString'
+      }
+      {
+        'include': '#singlequotedString'
+      }
+    ]

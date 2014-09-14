@@ -68,23 +68,27 @@
   }
 
   {
-    'match': '(?i)\\b(material)\\b'
+    'match': '(?i)\\b(material|pass|shader_properties|texture_unit)\\b'
     'name': 'keyword.material.mat'
   }
   {
-    'match': '(?i)\\b(ambient|diffuse|specular|emissive)\\b'
+    'match': '(?i)\\b(ambient|diffuse|specular|emissive|scene_blend|depth_write|depth_check|alpha_rejection|transparent_sorting|polygon_mode)\\b'
     'name': 'constant.character.mat'
   }
   {
-    'match': '(?i)\\b(parent)\\b'
+    'match': '(?i)\\b(blend_type)\\b'
+    'name': 'variable.mat'
+  }
+  {
+    'match': '(?i)\\b(parent|fragment_program|vertex_program)\\b'
     'name': 'string.constant.mat'
   }
   {
-    'match': '(?i)\\b(diffuseMap|specMap|normalMap)\\b'
+    'match': '(?i)\\b(diffuseMap|specMap|normalMap|diffuseMapBlend|specMapBlend|normalMapBlend)\\b'
     'name': 'entity.name.function.mat'
   }
   {
-    'match': '(?i)\\b(diffuseMapUvIndex|specMapUvIndex)\\b'
+    'match': '(?i)\\b(diffuseMapUV|specMapUV|normalMapUV|diffuseMapBlendUV|specMapBlendUV|normalMapBlendUV)\\b'
     'name': 'meta.preprocessor'
   }
   {
@@ -113,7 +117,7 @@
     'end': '(?=[^\\\\a-zA-Z_\\x{7f}-\\x{ff}])'
     'patterns': [
       {
-        'match': '(?i)\\b(true|false)\\b'
+        'match': '(?i)\\b(true|false|default)\\b'
         'name': 'constant.numeric.mat'
       }
     ]

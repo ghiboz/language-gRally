@@ -72,7 +72,7 @@
     'name': 'keyword.material.mat'
   }
   {
-    'match': '(?i)\\b(ambient|diffuse|specular|emissive|scene_blend|depth_write|depth_check|alpha_rejection|transparent_sorting|polygon_mode)\\b'
+    'match': '(?i)\\b(ambient|diffuse|specular|emissive|scene_blend|depth_write|depth_check|alpha_rejection|transparent_sorting|polygon_mode|depth_bias|cull_hardware|transparent)\\b'
     'name': 'constant.character.mat'
   }
   {

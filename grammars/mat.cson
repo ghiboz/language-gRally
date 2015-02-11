@@ -117,7 +117,7 @@
     'end': '(?=[^\\\\a-zA-Z_\\x{7f}-\\x{ff}])'
     'patterns': [
       {
-        'match': '(?i)\\b(true|false|default)\\b'
+        'match': '(?i)\\b(true|false|default|off|on|alpha_blend|force|yes|no|greater|always_fail|alwais_pass|less|less_equal|equal|not_equal|greater_equal)\\b'
         'name': 'constant.numeric.mat'
       }
     ]
